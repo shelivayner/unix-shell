@@ -14,10 +14,15 @@ int main(void)
     input[strcspn(input, "\n")] = '\0';
     char **tokens = tokenize(input);
 
+    printf("[");
     for (int i = 0; tokens[i] != NULL; i++) {
-        printf("%s\n", tokens[i]);
-        fflush(stdout);
+        printf("\"%s\"", tokens[i]);
+        if (tokens[i+1] != NULL) {
+            printf(", ");
+        }
     }
+    printf("]\n");
+    fflush(stdout);
     free_tokens(tokens);
     return 0;
 }

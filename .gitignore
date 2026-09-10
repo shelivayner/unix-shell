@@ -1,0 +1,26 @@
+# Build artifacts
+*.o
+*.a
+*.so
+*.out
+unix-shell
+test_tokenizer
+
+# Debug and analysis
+*.d
+*.gch
+*.gcda
+*.gcno
+*.gcov
+core
+core.*
+vgcore.*
+
+# Editor and OS
+*~
+*.swp
+*.swo
+.DS_Store
+.vscode/
+.idea/
+*.code-workspace

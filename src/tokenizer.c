@@ -5,9 +5,7 @@
 
 char **tokenize(const char *line)
 {
-    char str [256];
-    strncpy(str, line, sizeof(str) - 1);
-    str[sizeof(str) - 1] = '\0';
+    char *str = strdup(line);
     const char *delimiters = " \t\r\n\v\f";
     char **tokens = malloc(sizeof(char *));
     char *token = strtok(str, delimiters);
@@ -22,6 +20,7 @@ char **tokenize(const char *line)
     }
 
     tokens[count] = NULL;
+    free(str);
     return tokens;
 }
 

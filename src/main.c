@@ -1,4 +1,6 @@
 #include "tokenizer.h"
+#include "parser.h"
+#include "executer.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -14,15 +16,18 @@ int main(void)
     input[strcspn(input, "\n")] = '\0';
     char **tokens = tokenize(input);
 
-    printf("[");
-    for (int i = 0; tokens[i] != NULL; i++) {
-        printf("\"%s\"", tokens[i]);
-        if (tokens[i+1] != NULL) {
-            printf(", ");
-        }
-    }
-    printf("]\n");
-    fflush(stdout);
+    struct Command *cmd = parse(tokens);
+    execute_command(cmd);
+
+    // printf("[");
+    // for (int i = 0; tokens[i] != NULL; i++) {
+    //     printf("\"%s\"", tokens[i]);
+    //     if (tokens[i+1] != NULL) {
+    //         printf(", ");
+    //     }
+    // }
+    // printf("]\n");
+    // fflush(stdout);
     free_tokens(tokens);
     return 0;
 }

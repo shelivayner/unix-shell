@@ -1,8 +1,8 @@
 CC = gcc
-CFLAGS = -std=c11 -Wall -Wextra -Wpedantic
+CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -D_POSIX_C_SOURCE=200809L
 CPPFLAGS = -Iinclude
 
-SRCS = src/main.c src/tokenizer.c
+SRCS = src/main.c src/tokenizer.c src/parser.c src/executer.c
 OBJS = $(SRCS:.c=.o)
 
 .PHONY: all test clean
